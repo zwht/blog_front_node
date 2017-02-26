@@ -1,0 +1,21 @@
+{
+  "name": "express-blog",
+  "version": "1.0.0",
+  "description": "express blog zw",
+  "main": "app.js",
+  "scripts": {
+    "start": "supervisor  ./app",
+    "debug": "node-inspector",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "zw200813"
+  ],
+  "author": "zhaowei",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongoose": "^4.8.4",
+    "node-inspector": "^0.12.8"
+  }
+}
