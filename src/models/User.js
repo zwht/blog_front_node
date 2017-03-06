@@ -1,9 +1,12 @@
 /**
  * Created by zhaowei on 17/2/24.
  */
-var DB=require("./DB");
+var DB = require("./DB");
 
-var User = DB.model('user', { name: String });
+var User = DB.model('user', {
+    userName: String,
+    passWord: String
+});
 
 
 module.exports = User;
