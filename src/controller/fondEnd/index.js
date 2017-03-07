@@ -3,9 +3,18 @@
  */
 var fs = require('fs');
 var path = require('path');
+var Article = require("./../../models/Article");
 
 
 
 module.exports = function (req, res) {
-    res.render('index', {title: 'index'});
+
+    var articleList=[];
+    Article.find({},function (err,doc) {
+
+        for(var i=0;i<doc.length;i++){
+            articleList.push(doc[i]._doc);
+        }
+        res.render('index', {title: 'fuck',articleList:articleList});
+    });
 };

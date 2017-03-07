@@ -7,7 +7,6 @@ var crypto = require('crypto');
 
 
 module.exports = function (req, res) {
-    debugger
     if (!req.body.userName || !req.body.passWord) {
         res.json(state.getState(401));
         return;
@@ -23,7 +22,7 @@ module.exports = function (req, res) {
                 if (!docs.length) {
                     res.json(state.getState(402));
                 } else {
-                    res.json(state.getState(200, docs));
+                    res.json(state.getState(200));
                 }
             }
         });
