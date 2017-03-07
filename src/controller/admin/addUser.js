@@ -4,7 +4,7 @@
 var User = require("./../../models/User");
 var state = require("./../../servers/state");
 var crypto = require('crypto');
-var hash = crypto.createHash('md5');
+
 
 
 module.exports = function (req, res) {
@@ -40,6 +40,7 @@ module.exports = function (req, res) {
     }
 
     function addUser() {
+        var hash = crypto.createHash('md5');
         hash.update(body.passWord);
         var userObj = new User({userName: body.userName, passWord: hash.digest('hex')});
         userObj.save(function (err, data) {
