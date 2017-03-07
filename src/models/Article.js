@@ -6,8 +6,8 @@ var DB = require("./DB");
 var Article = DB.model('article', {
     title: String,
     content: String,
-    createTime: Int8Array,
-    authorId: String
+    createTime: Date,
+    userId: String
 });
 
 module.exports = Article;

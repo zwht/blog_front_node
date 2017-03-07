@@ -7,6 +7,7 @@ var crypto = require('crypto');
 
 
 module.exports = function (req, res) {
+    debugger
     if (!req.body.userName || !req.body.passWord) {
         res.json(state.getState(401));
         return;

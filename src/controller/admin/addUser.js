@@ -41,8 +41,8 @@ module.exports = function (req, res) {
 
     function addUser() {
         hash.update(body.passWord);
-        var zw = new User({userName: body.userName, passWord: hash.digest('hex')});
-        zw.save(function (err, data) {
+        var userObj = new User({userName: body.userName, passWord: hash.digest('hex')});
+        userObj.save(function (err, data) {
             if (err) {
                 res.json(state.getState(501, err))
             } else {

@@ -7,7 +7,7 @@ var DB = require("./DB");
 var Visitor = DB.model('visitor', {
     articleId:String,
     ip: String,
-    createTime: Int8Array,
+    createTime: Date,
     bower: String,
     system: String
 });

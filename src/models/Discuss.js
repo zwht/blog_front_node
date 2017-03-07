@@ -7,7 +7,7 @@ var DB = require("./DB");
 var Discuss = DB.model('discuss', {
     name: String,
     content: String,
-    createTime: Int8Array,
+    createTime: Date,
     articleId: String,
     email: String,
     isShow: Boolean
