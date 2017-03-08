@@ -14,7 +14,7 @@ module.exports = function (req, res) {
     var hash = crypto.createHash('md5');
     hash.update(req.body.passWord);
     var passWord = hash.digest('hex');
-    User.find({userName: req.body.userName, passWord: passWord},
+    User.find({userName: req.body.userName, passWord: passWord},['_id'],
         function (err, docs) {
             if (err) {
                 res.json(state.getState(501, err))
@@ -22,7 +22,7 @@ module.exports = function (req, res) {
                 if (!docs.length) {
                     res.json(state.getState(402));
                 } else {
-                    res.json(state.getState(200));
+                    res.json(state.getState(200,docs));
                 }
             }
         });
