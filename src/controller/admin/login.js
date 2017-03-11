@@ -22,7 +22,7 @@ module.exports = function (req, res) {
                 if (!docs.length) {
                     res.json(state.getState(402));
                 } else {
-                    res.json(state.getState(200,docs));
+                    res.json(state.getState(200,docs[0]));
                 }
             }
         });

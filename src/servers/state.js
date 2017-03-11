@@ -5,6 +5,10 @@
 module.exports = {
     stateList: [
         {
+            key: 400,
+            str: '获取不到数据！'
+        },
+        {
             key: 401,
             str: '传人参数错误！'
         },

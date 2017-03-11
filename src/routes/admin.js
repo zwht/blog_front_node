@@ -2,17 +2,21 @@
  * Created by zhaowei on 17/1/28.
  */
 var admin= require("../controller/admin/admin");
-var getArticle = require("../controller/admin/getArticle");
+var getArticleList = require("../controller/admin/getArticleList");
+var getOneArticle = require("../controller/admin/getOneArticle");
+
 
 var login = require("../controller/admin/login");
 var addUser= require("../controller/admin/addUser");
 var addArticle = require("../controller/admin/addArticle");
 
+
 var url="/rest/admin/";
 module.exports = function (app) {
     app.get('/admin', admin);
     app.get(url+'index', index);
-    app.get(url+'getArticle', getArticle);
+    app.get(url+'getArticleList', getArticleList);
+    app.get(url+'getOneArticle', getOneArticle);
 
 
     app.post(url+'login', login);

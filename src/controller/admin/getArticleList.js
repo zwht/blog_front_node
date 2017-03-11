@@ -2,7 +2,6 @@
  * Created by zhaowei on 17/3/10.
  */
 var Article = require("./../../models/Article");
-var User = require("./../../models/User");
 var state = require("./../../servers/state");
 
 module.exports = function (req, res) {
@@ -15,9 +14,9 @@ module.exports = function (req, res) {
 
 
     function init() {
-        Article.find({userId:params.userId}, function (err, docs) {
+        Article.find({userId:params.userId},['_id','createTime','title'], function (err, docs) {
             if (err) {
-                res.json(state.getState(406))
+                res.json(state.getState(400,err))
             } else {
                 res.json(state.getState(200,docs))
             }
