@@ -51,5 +51,16 @@ module.exports = {
             if (this.stateList[i].key == state) stateObj = this.stateList[i];
         }
         return Object.assign(stateObj, newData);
+    },
+    validateParam: function (req, res, params) {
+        var body=req.method=='GET'?req.query:req.body;
+        for (var i = 0; i < params.length; i++) {
+            if (body[params[i]] == undefined||body[params[i]] == 'undefined') {
+                res.json(this.getState(401));
+                return false;
+                break
+            }
+        }
+        return body;
     }
 };

@@ -5,7 +5,9 @@ var Article = require("./../../models/Article");
 var User = require("./../../models/User");
 var state = require("./../../servers/state");
 
+
 module.exports = function (req, res) {
+
     var body = req.body;
     init();
     function init() {
@@ -32,7 +34,7 @@ module.exports = function (req, res) {
     }
 
     function hasArticleTitle() {
-        Article.find({title:body.title}, function (err, docs) {
+        Article.find({title:body.title,userId:body.userId}, function (err, docs) {
             if (err) {
                 res.json(state.getState(406))
             } else {

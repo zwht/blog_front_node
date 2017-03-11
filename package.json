@@ -4,6 +4,7 @@
   "description": "express blog zw",
   "main": "app.js",
   "scripts": {
+    "mongod":"mongod",
     "start": "supervisor --debug  ./app",
     "debug": "node-inspector",
     "test": "echo \"Error: no test specified\" && exit 1"
