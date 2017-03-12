@@ -1,8 +1,9 @@
 /**
- * Created by zhaowei on 17/3/5.
+ * Created by zhaowei on 17/3/12.
  */
+var jwt = require("jsonwebtoken");
+var zw={
 
-module.exports = {
     stateList: [
         {
             key: 400,
@@ -37,6 +38,10 @@ module.exports = {
             str: '文章名字重复了！'
         },
         {
+            key: 412,
+            str: '没有权限，重新登录！'
+        },
+        {
             key: 200,
             str: '成功！'
         },
@@ -66,5 +71,22 @@ module.exports = {
             }
         }
         return body;
+    },
+    tokenVerify:function (req, res, next) {
+        var token = (req.body && req.body.access_token) || (req.query && req.query.access_token) || req.headers['access-token']|| req.headers.access_token;
+        if (token) {
+            var decoded = jwt.decode(token,{complete: true});
+            if((new Date()).getTime()<decoded.payload.iat){
+                next();
+
+            }else{
+                res.json(zw.getState(412));
+            }
+        } else {
+            res.json(zw.getState(412));
+        }
     }
 };
+
+
+module.exports = zw;

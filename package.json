@@ -4,7 +4,8 @@
   "description": "express blog zw",
   "main": "app.js",
   "scripts": {
-    "mongod":"mongod",
+    "mongod": "mongod",
+    "mongo": "mongo",
     "start": "supervisor --debug  ./app",
     "debug": "node-inspector",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,5 +21,8 @@
     "express": "^4.14.0",
     "mongoose": "^4.8.4",
     "node-inspector": "^0.12.8"
+  },
+  "devDependencies": {
+    "jsonwebtoken": "^7.3.0"
   }
 }

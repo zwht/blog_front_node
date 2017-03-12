@@ -2,7 +2,7 @@
  * Created by zhaowei on 17/3/5.
  */
 var User = require("./../../models/User");
-var state = require("./../../servers/state");
+var zw = require("./../../servers/zw");
 var crypto = require('crypto');
 
 
@@ -13,11 +13,11 @@ module.exports = function (req, res) {
 
     function init() {
         if (!body.userName || !body.passWord || !body.repeatPassWord) {
-            res.json(state.getState(401));
+            res.json(zw.getState(401));
             return;
         }
         if (body.passWord != body.repeatPassWord) {
-            res.json(state.getState(405));
+            res.json(zw.getState(405));
             return;
         }
         hasUserName();
@@ -28,12 +28,12 @@ module.exports = function (req, res) {
         User.find({userName: req.body.userName},
             function (err, docs) {
                 if (err) {
-                    res.json(state.getState(501, err))
+                    res.json(zw.getState(501, err))
                 } else {
                     if (!docs.length) {
                         addUser();
                     } else {
-                        res.json(state.getState(403));
+                        res.json(zw.getState(403));
                     }
                 }
             });
@@ -45,9 +45,9 @@ module.exports = function (req, res) {
         var userObj = new User({userName: body.userName, passWord: hash.digest('hex')});
         userObj.save(function (err, data) {
             if (err) {
-                res.json(state.getState(501, err))
+                res.json(zw.getState(501, err))
             } else {
-                res.json(state.getState(200,data));
+                res.json(zw.getState(200,data));
             }
         });
     }

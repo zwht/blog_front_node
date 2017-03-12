@@ -5,7 +5,8 @@ var DB = require("./DB");
 
 var User = DB.model('user', {
     userName: String,
-    passWord: String
+    passWord: String,
+    token: String
 });
 
 

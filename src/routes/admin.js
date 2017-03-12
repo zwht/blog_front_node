@@ -1,6 +1,8 @@
 /**
  * Created by zhaowei on 17/1/28.
  */
+var zw = require("../servers/zw");
+
 var admin= require("../controller/admin/admin");
 var getArticleList = require("../controller/admin/getArticleList");
 var getOneArticle = require("../controller/admin/getOneArticle");
@@ -15,7 +17,7 @@ var url="/rest/admin/";
 module.exports = function (app) {
     app.get('/admin', admin);
     app.get(url+'index', index);
-    app.get(url+'getArticleList', getArticleList);
+    app.get(url+'getArticleList',[zw.tokenVerify], getArticleList);
     app.get(url+'getOneArticle', getOneArticle);
 
 
